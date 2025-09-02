@@ -1,22 +1,62 @@
-# This is a basic script to setup a fresh Debian 13 installation for running Docker.
+# 🐧 Fresh Debian Server Setup for Docker
 
+A sleek, automated bash script to transform a fresh Debian 13 (Trixie) installation into a lean, mean, Docker-ready machine. This script strips away the unnecessary and installs the essential tools for a powerful headless server environment.
 
-## Using the script
+---
 
-Download the script. Run a terminal and point to the directory where you downloaded the script (e.g. /home/your_user/).  
-Run **chmod +x "script_name" (default:Fresh_Debian-Server_Setup)**. The script is automatic and requires no user input.  
+## ✨ Features
 
-**Disclaimer**: **THIS SCRIPT MUST BE RUN AS ROOT**,**REGULAR USER PRIVILEGES WON'T BE ENOUGH!** 
+| Category | Tools & Features |
+| :--- | :--- |
+| **System Monitoring** | `Fastfetch` (System Info), `Htop` (Resource Monitor) |
+| **Modern Shell** | `Zsh` + `Oh My Zsh` with a curated selection of plugins |
+| **Remote Access** | OpenSSH Server for secure remote management |
+| **Philosophy** | **DE-less** (No Graphical Desktop Environment) for minimal resource overhead |
 
-### Key features
+---
 
-**Fastfetch** - for quick checking system information.  
-**Htop** - for real-time monitoring of system resources.  
-**Zsh** - shell with more modern capabilities.  
-**Oh my Zsh** - plugin manager for **Zsh**.  
-**SSH server** - SSH server for remote control.  
-**DE-less** - no DE is present (default:Gnome), much less resources needed.  
+## 🚀 Getting Started
 
-## Disclaimer
+### Prerequisites
+- A fresh installation of **Debian 13 (Trixie)**
+- **Direct root user access** (The script will not run with sudo privileges)
 
-This script is provided as-is in beta version, and I assume no responsibility for any issues or damages that may arise from its use.
+### Installation & Execution
+
+1.  **Download the Script:**
+    ```bash
+    wget https://raw.githubusercontent.com/StiviKM/Fresh_Debian-Server_Setup/main/Fresh_Debian-Server_Setup.sh
+    ```
+
+2.  **Switch to root user:**
+    ```bash
+    su -
+    ```
+
+3.  **Navigate to script location and make it executable:**
+    ```bash
+    chmod +x Fresh_Debian-Server_Setup.sh
+    ```
+
+4.  **Execute as root user:**
+    ```bash
+    ./Fresh_Debian-Server_Setup.sh
+    ```
+
+> ⚡ The script is fully automated and requires no user interaction once started. Sit back and watch your system transform.
+
+---
+
+## ⚠️ CRITICAL DISCLAIMER
+
+**This script is provided in a beta state, "AS IS", without any warranty. Use it at your own risk.**
+
+- **ONLY THE ROOT USER CAN EXECUTE THIS SCRIPT.** This script will not work with `sudo` or users with root privileges. You must be logged in as the actual `root` user.
+- It is designed exclusively for **fresh Debian 13 installations**. Running it on an existing system may cause conflicts and data loss.
+- The author assumes **no responsibility** for any data loss, system instability, or other issues arising from the use of this script.
+
+**⚠️ SECURITY NOTE:** Always review and understand any script from the internet before executing it, especially when requiring root access.
+
+---
+
+*Crafted with care for the Debian community.*
