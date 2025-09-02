@@ -3,7 +3,10 @@
 
 ## Using the script
 
-Download the script. Run a terminal and point to the directory where you downloaded the script (e.g. /home/your_user/). Run **sudo chmod +x "script_name" (default:Fresh_Debian-Server_Setup)**. The script is automatic and requires no user input.
+Download the script. Run a terminal and point to the directory where you downloaded the script (e.g. /home/your_user/).  
+Run **chmod +x "script_name" (default:Fresh_Debian-Server_Setup)**. The script is automatic and requires no user input.  
+
+**Disclaimer**: **THIS SCRIPT MUST BE RUN AS ROOT**,**REGULAR USER PRIVILEGES WON'T BE ENOUGH!** 
 
 ### Key features
 
