@@ -43,7 +43,7 @@ A sleek, automated bash script to transform a fresh Debian 13 (Trixie) installat
     ./Fresh_Debian-Server_Setup.sh
     ```
 
-> ⚡ The script is fully automated and requires no user interaction once started. Sit back and watch your system transform.
+> ⚡ The script is fully automated and requires no user interaction once started.
 
 ---
 
