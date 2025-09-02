@@ -12,7 +12,7 @@ Download the script. Run a terminal and point to the directory where you downloa
 **Zsh** - shell with more modern capabilities.  
 **Oh my Zsh** - plugin manager for **Zsh**.  
 **SSH server** - SSH server for remote control.  
-**DE-kess** - no DE is present (default:Gnome), much less resources needed.  
+**DE-less** - no DE is present (default:Gnome), much less resources needed.  
 
 ## Disclaimer
 
