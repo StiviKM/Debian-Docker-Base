@@ -105,6 +105,16 @@ if [ -f "$ZSHRC_FILE" ]; then
     else
         print_error "Failed to update .zshrc"
     fi
+    
+    # Add security fix for insecure directories warning
+    print_status "Adding security fix for zsh insecure directories..."
+    echo '' >> "$ZSHRC_FILE"
+    echo '# Fix insecure directories warning' >> "$ZSHRC_FILE"
+    echo 'if [ -n "$ZSH_VERSION" ]; then' >> "$ZSHRC_FILE"
+    echo '    compaudit 2>/dev/null | xargs chmod g-w >/dev/null 2>&1' >> "$ZSHRC_FILE"
+    echo 'fi' >> "$ZSHRC_FILE"
+    print_status "Security fix added to .zshrc"
+    
 else
     print_error ".zshrc file not found! oh-my-zsh installation may have failed."
 fi
@@ -140,6 +150,7 @@ echo "✅ git installed"
 echo "✅ oh-my-zsh and plugins attempted"
 echo "✅ SSH server installed"
 echo "✅ Additional tools installed"
+echo "✅ ZSH security fix applied"
 echo ""
 echo "Next steps:"
 echo "1. Log out and log back in to use zsh"
