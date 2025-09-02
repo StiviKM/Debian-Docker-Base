@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Debian System Setup Script - Robust version for direct root execution
+# Setting a fresh installed Debian 13 as a CLI only OS, prepared for running Docker.
 set -e
 
 print_status() {
@@ -11,7 +11,7 @@ print_error() {
     echo -e "\033[1;31mERROR: $1\033[0m"
 }
 
-# Detect the original user more reliably
+# User Detection
 if [ -n "$SUDO_USER" ]; then
     ORIGINAL_USER="$SUDO_USER"
 else
@@ -33,32 +33,32 @@ fi
 
 print_status "User home directory: $USER_HOME"
 
-# Update and upgrade system
+# System update and upgrade
 print_status "Updating package lists..."
 apt update
 
 print_status "Upgrading system packages..."
 apt upgrade -y
 
-# Remove GNOME Desktop Environment
+# Removing Gnome DE for a CLI only OS
 print_status "Removing GNOME Desktop Environment..."
 apt remove --purge gnome-shell gnome-session gdm3 -y
 
 print_status "Cleaning up unused packages..."
 apt autoremove --purge -y
 
-# Install zsh and set as default shell
+# Zsh install and setting it as a default shell
 print_status "Installing zsh..."
 apt install zsh -y
 
 print_status "Setting zsh as default shell for $ORIGINAL_USER..."
 chsh -s $(which zsh) "$ORIGINAL_USER"
 
-# Install git
+# Git install
 print_status "Installing git..."
 apt install git -y
 
-# Install oh-my-zsh as the regular user - with better error handling
+# Oh-My-Zsh install with error handling
 print_status "Installing oh-my-zsh..."
 if su - "$ORIGINAL_USER" -c 'RUNZSH=no sh -c "$(wget -q https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"'; then
     print_status "oh-my-zsh installed successfully"
@@ -66,7 +66,7 @@ else
     print_error "oh-my-zsh installation failed, continuing with other steps..."
 fi
 
-# Install zsh plugins with better error handling
+# Zsh plugins install
 ZSH_CUSTOM="$USER_HOME/.oh-my-zsh/custom"
 
 install_plugin() {
