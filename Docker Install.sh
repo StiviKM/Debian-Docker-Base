@@ -1,6 +1,10 @@
 #!/bin/bash
+#THIS SCRIPT IS RAN AFTER THE Fresh_Debian-Server_Setup SCRIPT! DO NOT RUN IT WITHOUT USING THE FIRST SCRIPT!
 
-# Docker Installation Script for Root
+
+
+
+# Docker Installation Script
 echo "Starting Docker installation as root..."
 
 # Download the Docker installation script
