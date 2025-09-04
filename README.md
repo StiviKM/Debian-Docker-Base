@@ -1,96 +1,166 @@
-# 🐧 Fresh Debian Server Setup for Docker
+# 🐧 Debian Server Setup Suite
 
-A sleek, automated bash script to transform a fresh Debian 13 (Trixie) installation into a lean, mean, Docker-ready machine. This script strips away the unnecessary and installs the essential tools for a powerful headless server environment.
+A comprehensive collection of automated scripts to transform a fresh Debian 13 (Trixie) installation into a powerful, Docker-ready server environment. This modular setup strips away unnecessary components and installs essential tools for a lean, efficient headless server.
+
+---
+
+## 🏗️ Script Architecture
+
+| Script | Purpose | Order |
+| :--- | :--- | :--- |
+| **`Debian_Base.sh`** | Base system setup, DE removal, shell configuration | 1st |
+| **`Docker_Install.sh`** | Docker Engine installation and configuration | 2nd |
+| **`CasaOS_Install.sh`** | CasaOS web interface installation (Optional) | 3rd |
 
 ---
 
 ## ✨ Features
 
-| Category | Tools & Features |
-| :--- | :--- |
-| **System Monitoring** | `Fastfetch` (System Info), `Htop` (Resource Monitor) |
-| **Modern Shell** | `Zsh` + `Oh My Zsh` with a curated selection of plugins |
-| **Remote Access** | OpenSSH Server for secure remote management |
-| **Containerization** | Docker Engine for container deployment |
-| **Philosophy** | **DE-less** (No Graphical Desktop Environment) for minimal resource overhead |
+### Core System
+- **Minimal Foundation**: DE-less environment for maximum performance
+- **System Monitoring**: `Fastfetch` (System Info), `Htop` (Resource Monitor)
+- **Remote Access**: OpenSSH Server for secure management
+- **Modern Shell**: `Zsh` + `Oh My Zsh` with premium plugins
+
+### Containerization
+- **Docker Engine**: Full container runtime environment
+- **Optional Web UI**: CasaOS for easy container management
+- **Optimized Setup**: Pre-configured for container workloads
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Installation Guide
 
 ### Prerequisites
-- A fresh installation of **Debian 13 (Trixie)**
-- **Direct root user access** (The scripts will not run with sudo privileges)
+- Fresh **Debian 13 (Trixie)** installation
+- **Direct root access** (scripts require actual root user, not sudo)
 
-### Installation & Execution
+### Step 1: Base System Setup
 
-#### Step 1: System Setup Script
+```bash
+# Download and execute the main setup script
+wget https://raw.githubusercontent.com/StiviKM/Debian-Docker-Base/main/Debian_Base.sh
+chmod +x Debian_Base.sh
+./Debian_Base.sh
+```
 
-1.  **Download the System Setup Script:**
-    ```bash
-    wget https://raw.githubusercontent.com/StiviKM/Fresh_Debian-Server_Setup/main/Fresh_Debian-Server_Setup.sh
-    ```
+**This will:**
+- Remove GNOME desktop environment
+- Install Zsh with Oh My Zsh and plugins
+- Set up SSH server
+- Install system monitoring tools
+- Perform cleanup and optimization
 
-2.  **Switch to root user:**
-    ```bash
-    su -
-    ```
+### Step 2: Reboot into CLI Environment
 
-3.  **Navigate to script location and make it executable:**
-    ```bash
-    chmod +x Fresh_Debian-Server_Setup.sh
-    ```
-
-4.  **Execute as root user:**
-    ```bash
-    ./Fresh_Debian-Server_Setup.sh
-    ```
-
-> ⚡ The script is fully automated and requires no user interaction once started.
-
-#### Step 2: Reboot into CLI Environment
-
-**After the first script completes, reboot your system to enter the pure CLI environment:**
 ```bash
 reboot now
 ```
 
-**After reboot, log back in as root user:**
+After reboot, log back in as root:
 ```bash
 su -
 ```
 
-#### Step 3: Docker Installation Script
+### Step 3: Docker Installation
 
-1.  **Download the Docker installation script:**
-    ```bash
-    wget https://raw.githubusercontent.com/StiviKM/Fresh_Debian-Server_Setup/main/Docker_Install.sh
-    ```
+```bash
+# Download and run Docker installation
+wget https://raw.githubusercontent.com/StiviKM/Debian-Docker-Base/main/Docker_Install.sh
+chmod +x Docker_Install.sh
+./Docker_Install.sh
+```
 
-2.  **Make it executable:**
-    ```bash
-    chmod +x Docker_Install.sh
-    ```
+**This will:**
+- Install Docker Engine
+- Enable and start Docker service
+- Verify successful installation
 
-3.  **Execute as root user:**
-    ```bash
-    ./Docker_Install.sh
-    ```
+### Step 4: Optional - CasaOS Installation
 
-> 🐳 This script will install Docker Engine and enable it to start on boot.
+```bash
+# Download and install CasaOS web interface
+wget https://raw.githubusercontent.com/StiviKM/Debian-Docker-Base/main/CasaOS_Install.sh
+chmod +x CasaOS_Install.sh
+./CasaOS_Install.sh
+```
 
----
-
-## ⚠️ CRITICAL DISCLAIMER
-
-**These scripts are provided in a beta state, "AS IS", without any warranty. Use them at your own risk.**
-
-- **ONLY THE ROOT USER CAN EXECUTE THESE SCRIPTS.** These scripts will not work with `sudo` or users with root privileges. You must be logged in as the actual `root` user.
-- They are designed exclusively for **fresh Debian 13 installations**. Running them on an existing system may cause conflicts and data loss.
-- The author assumes **no responsibility** for any data loss, system instability, or other issues arising from the use of these scripts.
-
-**⚠️ SECURITY NOTE:** Always review and understand any script from the internet before executing it, especially when requiring root access.
+**This will:**
+- Install CasaOS management interface
+- Provide access URL and default credentials
+- Integrate with existing Docker installation
 
 ---
 
-*Crafted with care for the Debian community.*
+## 🔧 Post-Installation
+
+### Verify Installation
+```bash
+# Check Docker
+docker --version
+docker info
+
+# Check system status
+systemctl status docker
+fastfetch
+```
+
+### Access Points
+- **SSH**: `ssh root@your-server-ip`
+- **CasaOS**: `http://your-server-ip:80` (if installed)
+- **Default Credentials**: Admin (set password on first access)
+
+---
+
+## 📚 Official Documentation & References
+
+### Core Technologies
+- **Debian 13 (Trixie)**: [Official Documentation](https://www.debian.org/releases/trixie/)
+- **Docker Engine**: [Installation Guide](https://docs.docker.com/engine/install/debian/)
+- **CasaOS**: [Official Website](https://www.casaos.io/) | [GitHub Repository](https://github.com/IceWhaleTech/CasaOS)
+- **Zsh**: [Official Documentation](https://www.zsh.org/)
+- **Oh My Zsh**: [GitHub Repository](https://github.com/ohmyzsh/ohmyzsh)
+
+### Security References
+- **OpenSSH**: [Security Best Practices](https://www.openssh.com/security.html)
+- **Docker Security**: [Official Security Guide](https://docs.docker.com/engine/security/)
+- **Debian Security**: [Security Updates](https://www.debian.org/security/)
+
+### Plugin References
+- **zsh-autosuggestions**: [GitHub Repository](https://github.com/zsh-users/zsh-autosuggestions)
+- **zsh-syntax-highlighting**: [GitHub Repository](https://github.com/zsh-users/zsh-syntax-highlighting)
+- **fast-syntax-highlighting**: [GitHub Repository](https://github.com/zdharma-continuum/fast-syntax-highlighting)
+- **zsh-autocomplete**: [GitHub Repository](https://github.com/marlonrichert/zsh-autocomplete)
+
+### Monitoring Tools
+- **htop**: [Official Documentation](https://htop.dev/)
+- **Fastfetch**: [GitHub Repository](https://github.com/fastfetch-cli/fastfetch)
+
+---
+
+## ⚠️ Critical Disclaimer
+
+**These scripts are provided in a beta state, "AS IS", without any warranty. Use at your own risk.**
+
+- **ROOT USER REQUIRED**: Scripts will not work with `sudo` or privileged users
+- **FRESH INSTALLS ONLY**: Designed exclusively for new Debian 13 systems
+- **NO LIABILITY**: Author assumes no responsibility for data loss or system issues
+
+**🔒 SECURITY NOTICE**: Always review scripts from the internet before execution, especially those requiring root access.
+
+---
+
+## 🎯 Use Cases
+
+- **Home Servers**: Perfect for media servers, file storage, home automation
+- **Development**: Clean Docker environment for development and testing
+- **Learning**: Great for understanding Linux administration and containers
+- **Lightweight Services**: Ideal for low-resource VPS and embedded systems
+
+---
+
+## 🤝 Contributing
+
+Found an issue or have suggestions? Please open an issue on our [GitHub Repository](https://github.com/StiviKM/Debian-Docker-Base).
+
+---
