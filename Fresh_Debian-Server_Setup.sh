@@ -40,6 +40,10 @@ apt update
 print_status "Upgrading system packages..."
 apt upgrade -y
 
+# Install curl (needed for Docker installation script)
+print_status "Installing curl (required for Docker installation)..."
+apt install -y curl
+
 # Removing Gnome DE for a CLI only OS
 print_status "Removing GNOME Desktop Environment..."
 apt remove --purge gnome-shell gnome-session gdm3 -y
