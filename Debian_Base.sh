@@ -157,13 +157,8 @@ echo "✅ Additional tools installed"
 echo "✅ ZSH security fix applied"
 echo ""
 echo "Next steps:"
-echo "1. Reboot the system to enter CLI-only environment"
-echo "2. Log back in as root user"
-echo "3. Download and run the Docker installation script:"
-echo "   wget https://raw.githubusercontent.com/StiviKM/Fresh_Debian-Server_Setup/main/Docker_Install.sh"
-echo "   chmod +x Docker_Install.sh"
-echo "   ./Docker_Install.sh"
-echo ""
+echo "Reboot the system to enter CLI-only environment"
+
 
 read -p "Do you want to reboot now? (y/N): " -n 1 -r
 echo
